@@ -3,11 +3,11 @@ const options = ["male", "female", "other"]
 
 
 // {
-//     "first_name": "Dan",
-//     "last_name": "Books",
-//     "email": "dan@books",
+//     "first_name": "Avatar",
+//     "last_name": "Aang",
+//     "email": "aang@airnation.com",
 //     "gender": "male",
-//     "salary": 10
+//     "salary": 1000
 // }
 const employeeSchema = new mongoose.Schema({
     first_name: {

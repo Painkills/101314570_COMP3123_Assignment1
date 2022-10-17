@@ -29,7 +29,6 @@ routes.get('/employees', async(req, res) => {
             "status": false, "message": err.message
         })
     }
-    
 });
 
 //  Retrieve a single employee with employeeID
@@ -49,7 +48,7 @@ routes.get('/employees/:employeeId', async(req, res) => {
 // Update a Employee with EmployeeId
 routes.put('/employees/:employeeId', async(req, res) => {
     try {
-        const updatedEmployee = await employeeModel.findByIdAndUpdate(req.params.employeeId, req.body)
+        const updatedEmployee = await employeeModel.findByIdAndUpdate(req.params.employeeId, req.body, { runValidators: true})
         res.status(200).send({
             updated_employee: updatedEmployee
         })
@@ -65,7 +64,7 @@ routes.delete('/employees', async(req, res) => {
     try {
         const deletedEmployee = await employeeModel.findByIdAndDelete(req.query.eid)
         res.status(204).send({
-            deleted_employee: deletedEmployee
+            "status": true, deleted_employee: deletedEmployee
         })
     } catch (err) {
         res.status(500).send({
