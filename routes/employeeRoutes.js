@@ -8,7 +8,7 @@ routes.post('/employees', async (req, res) => {
         const newEmployee = new employeeModel(req.body)
         await newEmployee.save()
         res.status(201).send({
-            created_employee: newEmployee
+            data: newEmployee
         })
     } catch (err) {
         res.status(500).send({
@@ -22,7 +22,7 @@ routes.get('/employees', async(req, res) => {
     try {
         const allEmployees = await employeeModel.find()
         res.status(200).send({
-            all_employees: allEmployees
+            list: allEmployees
         })
     } catch (err) {
         res.status(500).send({
