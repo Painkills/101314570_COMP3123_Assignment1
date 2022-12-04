@@ -3,15 +3,23 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/userRoutes')
 const employeeRoutes = require('./routes/employeeRoutes')
+const cors = require('cors')
 
 const DB_URL = "mongodb+srv://d4tich:get.me.in@cluster0.qibcjdv.mongodb.net/comp3123_assigment1?retryWrites=true&w=majority"
-const PORT_NUM = 8081
+const PORT_NUM = process.env.PORT || 8081
+const path = __dirname + '/views/';
 const app = express();
-app.use(bodyParser.urlencoded({ extended: true }))
+
+app.use(cors({ credentials: true, origin: 'http://localhost:3000', optionSuccessStatus: 200,}))
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use("/api", userRoutes)
 app.use("/api/emp", employeeRoutes)
+app.use(express.static(path));
 
+app.get('/', function (req,res) {
+    res.sendFile(path + "index.html");
+  });
 
 mongoose.connect(DB_URL, {
     useNewUrlParser: true,

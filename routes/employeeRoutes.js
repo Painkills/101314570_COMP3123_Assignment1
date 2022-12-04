@@ -45,7 +45,7 @@ routes.get('/employees/:employeeId', async(req, res) => {
     }
 });
 
-// Update a Employee with EmployeeId
+// Update an Employee with EmployeeId
 routes.put('/employees/:employeeId', async(req, res) => {
     try {
         const updatedEmployee = await employeeModel.findByIdAndUpdate(req.params.employeeId, req.body, { runValidators: true})
