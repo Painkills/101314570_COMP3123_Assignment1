@@ -10,23 +10,23 @@ const PORT_NUM = process.env.PORT || 8081
 const path = __dirname + '/views/';
 const app = express();
 
-// app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-app.use("/api", userRoutes)
-app.use("/api/emp", employeeRoutes)
-app.use(express.static(path));
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "https://101314570-comp3123-assignment2-reactjs");
+    res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header("Access-Control-Allow-Methods", ["GET", "POST", "PUT", "DELETE"]);
+    res.header("Access-Control-Allow-Methods", ["GET", "POST", "OPTIONS", "PUT", "DELETE"]);
     next();
 });
-app.use(cors({ credentials: true, origin: true, optionSuccessStatus: 200,}))
 
-app.get('/', function (req,res, next) {
-    res.sendFile(path + "index.html");
-    next();
-  });
+// app.use(express.static(path));
+app.use("/api", userRoutes)
+app.use("/api/emp", employeeRoutes)
+// app.use(cors({ credentials: true, origin: true, optionSuccessStatus: 200,}))
+
+// app.get('/', function (req,res) {
+//     res.sendFile(path + "index.html");
+// });
 
 mongoose.connect(DB_URL, {
     useNewUrlParser: true,
