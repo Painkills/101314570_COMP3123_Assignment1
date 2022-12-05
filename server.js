@@ -16,6 +16,7 @@ app.use("/api", userRoutes)
 app.use("/api/emp", employeeRoutes)
 // app.use(express.static(path));
 app.use(function(req, res, next) {
+    res.set('Authorization', 'Bearer ' + 'DtLDDYNQAbRO48QmFJO9pssD')
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.header("Access-Control-Allow-Methods", ["GET", "POST", "OPTIONS", "PUT", "DELETE"]);
