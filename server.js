@@ -10,7 +10,7 @@ const PORT_NUM = process.env.PORT || 8081
 const path = __dirname + '/views/';
 const app = express();
 
-app.use(cors({ credentials: true, origin: 'https://101314570-comp-3123-a2.vercel.app', optionSuccessStatus: 200,}))
+app.use(cors({ credentials: true, origin: '*', optionSuccessStatus: 200,}))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use("/api", userRoutes)
