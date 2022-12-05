@@ -9,6 +9,7 @@ const options = ["male", "female", "other"]
 //     "gender": "male",
 //     "salary": 1000
 // }
+
 const employeeSchema = new mongoose.Schema({
     first_name: {
         type: String,
