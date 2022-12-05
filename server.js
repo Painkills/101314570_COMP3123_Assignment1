@@ -22,7 +22,7 @@ app.use("/api/emp", employeeRoutes)
 //     res.header("Access-Control-Allow-Methods", ["GET", "POST", "OPTIONS", "PUT", "DELETE"]);
 //     next();
 // });
-app.use(cors({ credentials: true, origin: '*', optionSuccessStatus: 200,}))
+app.use(cors({ credentials: true, origin: true, optionSuccessStatus: 200,}))
 
 // app.get('/', function (req,res) {
 //     res.sendFile(path + "index.html");
