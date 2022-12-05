@@ -15,13 +15,13 @@ app.use(bodyParser.json())
 app.use("/api", userRoutes)
 app.use("/api/emp", employeeRoutes)
 app.use(express.static(path));
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header("Access-Control-Allow-Methods", ["GET", "POST", "OPTIONS", "PUT", "DELETE"]);
-    next();
-});
-// app.use(cors({ credentials: true, origin: '*', optionSuccessStatus: 200,}))
+// app.use(function(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     res.header("Access-Control-Allow-Methods", ["GET", "POST", "OPTIONS", "PUT", "DELETE"]);
+//     next();
+// });
+app.use(cors({ origin: '*', optionSuccessStatus: 200,}))
 
 app.get('/', function (req,res) {
     res.sendFile(path + "index.html");
