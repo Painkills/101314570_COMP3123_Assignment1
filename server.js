@@ -21,7 +21,7 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Methods", ["GET", "POST", "OPTIONS", "PUT", "DELETE"]);
     next();
 });
-app.use(cors({ credentials: true, origin: '*', optionSuccessStatus: 200,}))
+// app.use(cors({ credentials: true, origin: '*', optionSuccessStatus: 200,}))
 
 app.get('/', function (req,res) {
     res.sendFile(path + "index.html");
