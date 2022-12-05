@@ -10,7 +10,6 @@ const PORT_NUM = process.env.PORT || 8081
 const path = __dirname + '/views/';
 const app = express();
 
-app.use(cors({ credentials: true, origin: '*', optionSuccessStatus: 200,}))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use("/api", userRoutes)
@@ -22,6 +21,7 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Methods", ["GET", "POST", "OPTIONS", "PUT", "DELETE"]);
     next();
 });
+app.use(cors({ credentials: true, origin: '*', optionSuccessStatus: 200,}))
 
 app.get('/', function (req,res) {
     res.sendFile(path + "index.html");
